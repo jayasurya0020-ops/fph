@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>❤️ Proposal</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #ffe6e6;
+    margin: 0;
+    padding: 0;
+  }
+  #heart {
+    font-size: 100px;
+    cursor: pointer;
+    margin-top: 100px;
+    animation: pulse 1s infinite;
+    user-select: none;
+  }
+  @keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  #result {
+    font-size: 100px;
+    margin-top: 50px;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="heart">❤️</div>
+<div id="result"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script>
+document.getElementById("heart").addEventListener("click", function() {
+  let answer = confirm("Would you like to marry me Faina Pinhero?");
+  if (answer) {
+    // Yes: Trigger confetti
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { x: Math.random(), y: Math.random() - 0.2 }
+        });
+      }, i * 500);
+    }
+  } else {
+    // No: Show heartbreak + crying emoji, hide heart
+    document.getElementById("heart").style.display = "none";
+    document.getElementById("result").innerText = "💔";
+  }
+});
+</script>
+
+</body>
+</html>
